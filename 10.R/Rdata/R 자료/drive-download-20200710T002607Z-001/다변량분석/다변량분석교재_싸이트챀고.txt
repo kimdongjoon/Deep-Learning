@@ -1,0 +1,7 @@
+> crime = read.csv("http://datasets.flowingdata.com/crimeRatesByState-formatted.csv")
+> head(crime)
+           
+> rownames(crime)
+ 
+> rownames(crime) = crime[, 1]
+> rownames(crime)

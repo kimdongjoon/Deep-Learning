@@ -1,0 +1,169 @@
+> crime = read.csv("http://datasets.flowingdata.com/crimeRatesByState-formatted.csv")
+> head(crime)
+           
+> rownames(crime)
+ 
+> rownames(crime) = crime[, 1]
+> rownames(crime)
+           
+> stars(crime[, 2:8])
+> stars(crime[, 2:8], flip.labels = FALSE)
+> `?`(stars)
+> stars(crime[, 2:8], flip.labels = FALSE, key.loc = c(1, 10))
+> stars(crime[, 2:8], flip.labels = FALSE, key.loc = c(1, 15))
+> stars(crime[, 2:8], flip.labels = FALSE, key.loc = c(15, 1))
+> x = stars(crime[, 2:8], flip.labels = FALSE)
+> str(x)
+> x
+   
+> crime
+                                   
+> head(crime, 20)
+                                   
+> head(crime, 20)
+                                    
+> stars(crime[, 2:8], flip.labels = FALSE, key.loc = c(15, 1))
+> crime$robbery
+ [1] 140.7 141.4  80.9 144.4  91.1 176.1  84.6 113.0 154.8 672.1 169.4 154.8
+[13]  78.5  18.6 181.7 108.6  38.9  65.3  88.4 118.0  24.4 256.7 119.0 131.8
+[25]  92.0  82.3 124.1  18.9  59.1 194.7  27.4 151.6  98.7 182.7 145.5   7.4
+[37] 163.1  91.0  68.1 154.6  72.1 132.1  18.6 167.3 156.6  44.3  11.7  99.2
+[49]  92.1  44.6  82.2  15.3
+> summary(crime$robbery)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   7.40   67.40   98.95  114.40  152.40  672.10 
+> stars(crime[, 2:8], flip.labels = FALSE, key.loc = c(15, 1), 
++ draw.segments = TRUE)
+> install.packages("aplpack")
+package ¡®aplpack¡¯ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\User\AppData\Local\Temp\RtmpyOKqKf\downloaded_packages
+> library(aplpack)
+> faces(crime[, 2:8])             
+> education = read.csv("http://datasets.flowingdata.com/education.csv")
+> str(education)
+> head(education)
+          
+> library(lattice)
+> parallel(education[, 2:7])
+> parallel(education[, 2:7], horizontal.axis = FALSE)
+> parallel(education[, 2:7], horizontal.axis = FALSE, col = 1)
+> summary(education$reading)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  466.0   497.8   523.0   533.8   571.2   610.0 
+> color = education$reading > 523
+> color
+ [1] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE
+ [8] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+[15]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE
+[22] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+[29]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
+[36]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+[43]  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+[50] FALSE  TRUE  TRUE
+> color + 1
+ [1] 1 2 1 1 2 1 2 1 1 1 1 1 1 2 2 1 2 2 2 2 1 1
+[23] 1 2 2 2 2 2 2 1 1 1 2 1 1 2 2 2 1 1 1 1 2 2
+[45] 1 2 1 1 2 1 2 2
+> parallel(education[, 2:7], horizontal.axis = FALSE, col = color + 
++ 1)
+> `?`(parallel)
+> parallel(~education[, 2:7] | color, horizontal.axis = FALSE)
+> parallel(~education[, 2:7] | color, horizontal.axis = FALSE, 
++ col = 1)
+###
+> data = read.csv("20140528_baseball.csv")
+> data
+
+> data = read.csv("20140528_baseball.csv")
+> data
+    ÆÀ  ½Â·ü  Å¸À² ÀåÅ¸À² Ãâ·çÀ² Æò±ÕÀÚÃ¥
+1  KIA 0.455 0.285  0.424  0.345     5.40
+2   LG 0.372 0.276  0.380  0.358     5.08
+3   NC 0.578 0.283  0.445  0.360     4.11
+4   SK 0.444 0.275  0.409  0.347     5.59
+5 ³Ø¼¾ 0.545 0.283  0.471  0.372     5.44
+6 µÎ»ê 0.568 0.307  0.468  0.378     5.03
+7 ·Ôµ¥ 0.477 0.279  0.417  0.370     5.10
+8 »ï¼º 0.667 0.286  0.452  0.361     4.07
+9 ÇÑÈ­ 0.390 0.279  0.394  0.362     5.41
+> `?`(prcomp)
+> model = prcomp(data[, 2:6])
+> model = prcomp(data[, 2:6], scale = TRUE)
+> model
+Standard deviations:
+[1] 1.7459687 1.0357284 0.7145706 0.5838463
+[5] 0.1654456
+
+> summary(model)
+Importance of components:
+                          PC1    PC2    PC3
+Standard deviation     1.7460 1.0357 0.7146
+Proportion of Variance 0.6097 0.2145 0.1021
+Cumulative Proportion  0.6097 0.8242 0.9264
+                           PC4     PC5
+Standard deviation     0.58385 0.16545
+Proportion of Variance 0.06818 0.00547
+Cumulative Proportion  0.99453 1.00000
+
+> model2 = prcomp(data[, 2:6])
+> summary(model2)
+Importance of components:
+                          PC1     PC2     PC3
+Standard deviation     0.5677 0.07323 0.01258
+Proportion of Variance 0.9829 0.01636 0.00048
+Cumulative Proportion  0.9829 0.99925 0.99973
+                           PC4      PC5
+Standard deviation     0.00726 0.005996
+Proportion of Variance 0.00016 0.000110
+Cumulative Proportion  0.99989 1.000000
+
+> model2
+Standard deviations:
+[1] 0.567679610 0.073234537 0.012583863
+[4] 0.007259769 0.005995813
+
+Rotation:
+                 PC1         PC2         PC3
+½Â·ü      0.12362303 -0.90629095 -0.31763707
+Å¸À²      0.00356739 -0.07551151  0.40813509
+ÀåÅ¸À²    0.02003610 -0.39304994  0.56138120
+Ãâ·çÀ²    0.00303188 -0.06104765  0.64557607
+Æò±ÕÀÚÃ¥ -0.99211591 -0.12132462 -0.02480162
+                 PC4        PC5
+½Â·ü     -0.22522533  0.1083250
+Å¸À²      0.16089163  0.8954468
+ÀåÅ¸À²    0.60919251 -0.3985548
+Ãâ·çÀ²   -0.74294502 -0.1659163
+Æò±ÕÀÚÃ¥ -0.01745335  0.0081617
+
+> data
+    
+> model
+
+> plot(model)
+> biplot(model)
+
+> data
+
+> rownames(data) = data[, 1]
+> data
+       
+> model = prcomp(data[, 2:6], scale = TRUE)
+> biplot(model)
+> model = prcomp(data[, 3:6], scale = TRUE)
+> biplot(model)
+> str(model)
+
+> model$x
+            
+
+> pairs(cbind(data$½Â·ü, model$x[, 1:2]))
+> model
+
+> plot(model$x[, 1], model$x[, 2])
+> `?`(plot)
+> plot(model$x[, 1], model$x[, 2])
+> model$x
+
